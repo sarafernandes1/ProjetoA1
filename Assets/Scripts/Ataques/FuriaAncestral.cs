@@ -12,7 +12,7 @@ public class FuriaAncestral : MonoBehaviour
 
     public Image imagem_tempo;
 
-    float cooldownTime = 3;
+    float cooldownTime = 4;
     float nextFireTime = 0;
 
     void Start()
@@ -39,7 +39,7 @@ public class FuriaAncestral : MonoBehaviour
         {
             imagem_tempo.fillAmount += 1 / cooldownTime * Time.deltaTime;
 
-            if(qtd_mana.value<1) qtd_mana.value += 1.0f * Time.deltaTime;
+            if(qtd_mana.value<1) qtd_mana.value += 0.6f * Time.deltaTime;
             if (imagem_tempo.fillAmount >= 1)
             {
                 imagem_tempo.fillAmount = 0;

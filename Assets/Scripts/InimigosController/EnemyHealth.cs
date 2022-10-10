@@ -7,7 +7,6 @@ public class EnemyHealth : MonoBehaviour
     public int vida = 100;
     bool isdead = false;
 
-
     void Start()
     {
         if (transform.tag == "InimigoAlcance")
@@ -44,11 +43,13 @@ public class EnemyHealth : MonoBehaviour
         }
         if (other.gameObject.name == "Boladefogo")
         {
-            vida -= 10;
+            AtaqueBolaFogo(other);
+            other.SetActive(true);
         }
         if (other.gameObject.name == "RaioEletrico")
         {
-            vida -= 20;
+            AtaqueEletrico(other);
+            other.SetActive(true);
         }
         if (other.gameObject.name == "Rajadadevento")
         {
@@ -56,5 +57,32 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    public void AtaqueEletrico(GameObject raioeletrico)
+    {
+        vida -= 20;
+        raioeletrico.SetActive(false);
+    }
+
+    public void AtaqueBolaFogo(GameObject bolafogo)
+    {
+        float distanceToExplosion = Vector3.Distance(bolafogo.transform.position, transform.position);
+
+        if (distanceToExplosion < 4.0f)
+        {
+            vida -= 10;
+        }
+
+        if (distanceToExplosion >= 4.0f && distanceToExplosion<6.0f)
+        {
+            vida -= 6;
+        }
+
+        if (distanceToExplosion>=6.0f && distanceToExplosion<10.0f)
+        {
+            vida -= 2;
+        }
+
+        bolafogo.SetActive(false);
+    }
 
 }

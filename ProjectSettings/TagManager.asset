@@ -7,6 +7,8 @@ TagManager:
   - InimigoCorpoaCorpo
   - InimigoAlcance
   - Boss
+  - Recurso
+  - Vida
   layers:
   - Default
   - TransparentFX
