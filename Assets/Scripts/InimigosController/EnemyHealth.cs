@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public int vida = 100;
     bool isdead = false;
+    public GameObject drop;
 
     void Start()
     {
@@ -31,6 +32,8 @@ public class EnemyHealth : MonoBehaviour
 
     public void IsDead()
     {
+        drop.SetActive(true);
+        drop.transform.position = gameObject.transform.position;
         GameObject.Destroy(gameObject);
     }
 
