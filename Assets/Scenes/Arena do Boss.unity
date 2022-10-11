@@ -1601,7 +1601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3895865957201750374, guid: 2fb401a08bc8f594e83c75d24f7fbd89, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.506
+      value: 0.998
       objectReference: {fileID: 0}
     - target: {fileID: 3895865957201750374, guid: 2fb401a08bc8f594e83c75d24f7fbd89, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2072,6 +2072,25 @@ PrefabInstance:
       objectReference: {fileID: 1641898607}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
+--- !u!1 &1128586754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 008b98ebeb8ec184098f1bc3dca36285, type: 3}
+  m_PrefabInstance: {fileID: 497024732}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1128586757
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128586754}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: 008b98ebeb8ec184098f1bc3dca36285, type: 3}
 --- !u!43 &1175117257
 Mesh:
   m_ObjectHideFlags: 0
@@ -3783,7 +3802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6931201405891906655, guid: 760495cf63ebb2e44bf36c28885470af, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.49200004
       objectReference: {fileID: 0}
     - target: {fileID: 6931201405891906655, guid: 760495cf63ebb2e44bf36c28885470af, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3841,6 +3860,14 @@ PrefabInstance:
       propertyPath: inputController
       value: 
       objectReference: {fileID: 1641898607}
+    - target: {fileID: 6931201406673752382, guid: 760495cf63ebb2e44bf36c28885470af, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.604
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931201406673752382, guid: 760495cf63ebb2e44bf36c28885470af, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.562
+      objectReference: {fileID: 0}
     - target: {fileID: 6931201406775291790, guid: 760495cf63ebb2e44bf36c28885470af, type: 3}
       propertyPath: qtd_mana
       value: 
