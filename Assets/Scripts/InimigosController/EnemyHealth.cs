@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int vida = 100;
+    public float vida = 100;
     bool isdead = false;
-    public GameObject drop;
+    public Slider vida_player;
+    //public GameObject drop;
 
     void Start()
     {
@@ -20,7 +22,6 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-
     void Update()
     {
         if (vida <= 0)
@@ -32,8 +33,8 @@ public class EnemyHealth : MonoBehaviour
 
     public void IsDead()
     {
-        drop.SetActive(true);
-        drop.transform.position = gameObject.transform.position;
+        //drop.SetActive(true);
+        //drop.transform.position = gameObject.transform.position;
         GameObject.Destroy(gameObject);
     }
 
@@ -57,6 +58,18 @@ public class EnemyHealth : MonoBehaviour
         if (other.gameObject.name == "Rajadadevento")
         {
             vida -= 30;
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.transform.name == "ParededePedra")
+        {
+            vida -= (1.5f * Time.deltaTime);
+        }
+        if (collision.transform.tag == "Player")
+        {
+            vida_player.value -= 0.1f * Time.deltaTime;
         }
     }
 
@@ -86,6 +99,16 @@ public class EnemyHealth : MonoBehaviour
         }
 
         bolafogo.SetActive(false);
+    }
+
+    public void RajadaVento(GameObject vento)
+    {
+        float distanceToVento = Vector3.Distance(vento.transform.position, transform.position);
+
+        if (distanceToVento < 8.0f)
+        {
+            vida -= 10;
+        }
     }
 
 }

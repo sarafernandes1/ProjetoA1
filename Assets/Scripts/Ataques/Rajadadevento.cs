@@ -48,7 +48,6 @@ public class Rajadadevento : MonoBehaviour
 
     void Ataque()
     {
-
         sistema_particulas.Play();
         qtd_mana.value -= 0.45f;
 
