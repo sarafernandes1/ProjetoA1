@@ -5,10 +5,16 @@ using UnityEngine.UI;
 
 public class InimigosCorpoaCorpo : MonoBehaviour
 {
+    public Rigidbody bulletPrefab;
     public GameObject player;
     float speed, dist_max;
     public Rigidbody rigidbody_enemy;
     bool inimigo1, inimigo2, player_in_area;
+
+    public Slider qtd_vida;
+
+    float cooldownTime = 2;
+    float nextFireTime = 0;
 
     void Start()
     {
@@ -37,20 +43,15 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         }
         if (inimigo2 && player_in_area)
         {
-            AtaqueAlcance();
+            if (Time.time > nextFireTime)
+            {
+                AtaqueAlcance();
+            }
         }
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.transform.tag=="Player") player_in_area = true;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.transform.tag=="Player") player_in_area = false;
-    }
+   
 
     void AtaqueCorpoaCorpo()
     {
@@ -70,7 +71,31 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
     void AtaqueAlcance()
     {
-        //feitiço->jogador
+        var projectile = Instantiate(bulletPrefab, transform.position, transform.rotation);
+        projectile.velocity = transform.forward * 50;
+
+        Ray ray_ = new Ray(transform.position, transform.forward);
+
+        if(Physics.Raycast(ray_,out RaycastHit hit,100))
+        {
+            if (hit.collider.tag == "Player")
+            {
+                qtd_vida.value -=2.0f * Time.deltaTime;
+            }
+        }
+
+        nextFireTime = Time.time + cooldownTime;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.tag == "Player") player_in_area = true;
+    }
+
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.transform.tag == "Player") player_in_area = false;
     }
 
     private void OnParticleCollision(GameObject other)
