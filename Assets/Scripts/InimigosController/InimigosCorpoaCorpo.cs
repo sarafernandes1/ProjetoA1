@@ -43,7 +43,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         }
 
 
-        if (inimigo2)
+        if (inimigo2 && player_in_area)
         {
             if (Time.time > nextFireTime)
             {
@@ -53,7 +53,11 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
     }
 
-   
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player") player_in_area = true;
+    }
 
     void AtaqueCorpoaCorpo()
     {
@@ -90,10 +94,6 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Boss") player_in_area = true;
-    }
 
 
     private void OnTriggerExit(Collider other)
