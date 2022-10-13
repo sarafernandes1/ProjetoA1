@@ -9,7 +9,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     public GameObject player;
     float speed, dist_max;
     public Rigidbody rigidbody_enemy;
-    bool inimigo1, inimigo2, player_in_area;
+    public bool inimigo1, inimigo2, player_in_area;
 
     public Slider qtd_vida;
 
@@ -41,7 +41,9 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         {
             AtaqueCorpoaCorpo();
         }
-        if (inimigo2 && player_in_area)
+
+
+        if (inimigo2)
         {
             if (Time.time > nextFireTime)
             {
@@ -80,22 +82,23 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         {
             if (hit.collider.tag == "Player")
             {
-                qtd_vida.value -=2.0f * Time.deltaTime;
+                qtd_vida.value -=6.0f * Time.deltaTime;
             }
         }
 
         nextFireTime = Time.time + cooldownTime;
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player") player_in_area = true;
+        if (other.gameObject.tag == "Boss") player_in_area = true;
     }
 
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.transform.tag == "Player") player_in_area = false;
+        if (other.gameObject.tag == "Player") player_in_area = false;
     }
 
     private void OnParticleCollision(GameObject other)
