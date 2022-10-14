@@ -7,7 +7,6 @@ public class EnemyHealth : MonoBehaviour
 {
     public float vida = 100;
     bool isdead = false;
-    public Slider vida_player;
     //public GameObject drop;
 
     void Start()
@@ -69,7 +68,8 @@ public class EnemyHealth : MonoBehaviour
         }
         if (collision.transform.tag == "Player")
         {
-            vida_player.value -= 0.1f * Time.deltaTime;
+            HealthPlayer healthPlayer = collision.transform.GetComponent<HealthPlayer>();
+            healthPlayer.qtd_vida.value -= 0.1f * Time.deltaTime;
         }
     }
 

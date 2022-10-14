@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthPlayer : MonoBehaviour
 {
     public Slider qtd_vida;
-    bool isdead;
+    public bool isdead, atingido;
 
     void Start()
     {
@@ -21,5 +21,17 @@ public class HealthPlayer : MonoBehaviour
             isdead = true;
         }
     }
+
+    public void TakeDamage()
+    {
+       
+            qtd_vida.value -= 5.0f * Time.deltaTime;
+        
+    }
+
+
+  
+
+
 
 }

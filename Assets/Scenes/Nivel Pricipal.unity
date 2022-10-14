@@ -8731,7 +8731,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 30
+  m_Radius: 35
   m_Height: 2
   m_Direction: 1
   m_Center: {x: -0.5, y: 1, z: 0}
@@ -8750,10 +8750,19 @@ MonoBehaviour:
   bulletPrefab: {fileID: -1632672647080203213, guid: 3843b8ca953e90645a70e6022c353e84, type: 3}
   player: {fileID: 1750571970}
   rigidbody_enemy: {fileID: 0}
-  inimigo1: 0
-  inimigo2: 0
-  player_in_area: 0
-  qtd_vida: {fileID: 976291156}
+--- !u!114 &663182788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663182781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488370aff369eb345ac7fb9f14bb437f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vida: 100
 --- !u!43 &668395807
 Mesh:
   m_ObjectHideFlags: 0
@@ -8943,10 +8952,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 0}
   player: {fileID: 1750571970}
   rigidbody_enemy: {fileID: 672928376}
-  inimigo1: 0
-  inimigo2: 0
-  player_in_area: 0
-  qtd_vida: {fileID: 0}
 --- !u!54 &672928376
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8976,7 +8981,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 100
-  vida_player: {fileID: 976291156}
 --- !u!64 &672928382
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10025,10 +10029,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 0}
   player: {fileID: 1750571970}
   rigidbody_enemy: {fileID: 764566301}
-  inimigo1: 0
-  inimigo2: 0
-  player_in_area: 0
-  qtd_vida: {fileID: 0}
 --- !u!114 &764566307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10042,7 +10042,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 100
-  vida_player: {fileID: 0}
 --- !u!43 &772717027
 Mesh:
   m_ObjectHideFlags: 0
@@ -22815,7 +22814,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3895865956097752739, guid: 2fb401a08bc8f594e83c75d24f7fbd89, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3895865956097752764, guid: 2fb401a08bc8f594e83c75d24f7fbd89, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22907,7 +22906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3895865957201750378, guid: 2fb401a08bc8f594e83c75d24f7fbd89, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3895865957201750378, guid: 2fb401a08bc8f594e83c75d24f7fbd89, type: 3}
       propertyPath: m_TagString

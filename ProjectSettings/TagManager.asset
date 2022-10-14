@@ -9,6 +9,7 @@ TagManager:
   - Boss
   - Recurso
   - Vida
+  - AtaqueInimigo
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Enemy
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

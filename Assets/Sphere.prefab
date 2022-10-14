@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 5772625336194656062}
   - component: {fileID: 6991096847355530967}
   - component: {fileID: -1632672647080203213}
+  - component: {fileID: 196633024843801393}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: AtaqueInimigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,3 +113,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &196633024843801393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677739246074672546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9177ceeebf03ffe4f91733142275008a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atingido: 0

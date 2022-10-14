@@ -9,9 +9,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     public GameObject player;
     float speed, dist_max;
     public Rigidbody rigidbody_enemy;
-    public bool inimigo1, inimigo2, player_in_area;
-
-    public Slider qtd_vida;
+    bool inimigo1, inimigo2, player_in_area, hit_player;
 
     float cooldownTime = 2;
     float nextFireTime = 0;
@@ -50,7 +48,6 @@ public class InimigosCorpoaCorpo : MonoBehaviour
                 AtaqueAlcance();
             }
         }
-
     }
 
 
@@ -65,14 +62,24 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
         if (distanceToPlayer <= dist_max && inimigo1)
         {
-            transform.position += transform.forward * speed * Time.deltaTime;
-
+            Normal();
         }
         else
         {
-            transform.position += transform.forward * 0 * Time.deltaTime;
-            transform.position = new Vector3(transform.position.x, 0.0f, transform.position.z);
+            Perseguir();
         }
+    }
+
+    void Perseguir()
+    {
+        transform.position += transform.forward * speed * Time.deltaTime;
+
+    }
+
+    void Normal()
+    {
+        transform.position += transform.forward * 0 * Time.deltaTime;
+        transform.position = new Vector3(transform.position.x, 0.0f, transform.position.z);
     }
 
     void AtaqueAlcance()
@@ -80,25 +87,15 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         var projectile = Instantiate(bulletPrefab, transform.position, transform.rotation);
         projectile.velocity = transform.forward * 50;
 
-        Ray ray_ = new Ray(transform.position, transform.forward);
-
-        if(Physics.Raycast(ray_,out RaycastHit hit,100))
-        {
-            if (hit.collider.tag == "Player")
-            {
-                qtd_vida.value -=6.0f * Time.deltaTime;
-            }
-        }
-
         nextFireTime = Time.time + cooldownTime;
     }
 
-
-
-
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player") player_in_area = false;
+        if (other.gameObject.tag == "Player")
+        {
+            player_in_area = false;
+        }
     }
 
     private void OnParticleCollision(GameObject other)
