@@ -7,12 +7,20 @@ public class EnemyHealth : MonoBehaviour
 {
     public float vida = 100;
     bool isdead = false;
+    bool inimigo1, inimigo2;
+    public bool a;
     //public GameObject drop;
 
     void Start()
     {
+        if (transform.tag == "InimigoCorpoaCorpo")
+        {
+            inimigo1 = true;
+        }
+
         if (transform.tag == "InimigoAlcance")
         {
+            inimigo2 = true;
             vida = 200;
         }
         if (transform.tag == "Boss")
@@ -83,19 +91,27 @@ public class EnemyHealth : MonoBehaviour
     {
         float distanceToExplosion = Vector3.Distance(bolafogo.transform.position, transform.position);
 
-        if (distanceToExplosion < 4.0f)
+        if (inimigo1)
         {
-            vida -= 10;
+            if (distanceToExplosion < 4.0f)
+            {
+                vida -= 10;
+            }
+
+            if (distanceToExplosion >= 4.0f && distanceToExplosion < 6.0f)
+            {
+                vida -= 6;
+            }
+
+            if (distanceToExplosion >= 6.0f && distanceToExplosion < 10.0f)
+            {
+                vida -= 2;
+            }
         }
 
-        if (distanceToExplosion >= 4.0f && distanceToExplosion<6.0f)
+        if (inimigo2)
         {
-            vida -= 6;
-        }
-
-        if (distanceToExplosion>=6.0f && distanceToExplosion<10.0f)
-        {
-            vida -= 2;
+            vida-=5;
         }
 
         bolafogo.SetActive(false);

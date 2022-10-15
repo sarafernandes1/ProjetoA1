@@ -2543,6 +2543,10 @@ PrefabInstance:
       propertyPath: InitialModule.startLifetime.scalar
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6931201407173852654, guid: 760495cf63ebb2e44bf36c28885470af, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6931201407173852656, guid: 760495cf63ebb2e44bf36c28885470af, type: 3}
       propertyPath: imagem_tempo
       value: 
@@ -5368,7 +5372,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18824
+  m_Name: pb_Mesh18836
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8763,6 +8767,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 100
+  a: 0
+--- !u!64 &663182789
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663182781}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 416286625}
 --- !u!43 &668395807
 Mesh:
   m_ObjectHideFlags: 0
@@ -8981,6 +9000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 100
+  a: 0
 --- !u!64 &672928382
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10042,6 +10062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 100
+  a: 0
 --- !u!43 &772717027
 Mesh:
   m_ObjectHideFlags: 0

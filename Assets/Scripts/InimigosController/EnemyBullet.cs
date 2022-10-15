@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
+
     void Start()
     {
         
@@ -11,7 +12,6 @@ public class EnemyBullet : MonoBehaviour
 
     void Update()
     {
-        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -20,6 +20,13 @@ public class EnemyBullet : MonoBehaviour
         {
             HealthPlayer healthPlayer = collision.transform.GetComponent<HealthPlayer>();
             healthPlayer.TakeDamage();
+            Destroy(gameObject);
         }
+
+        if (collision.gameObject.name == "Chão")
+        {
+            Destroy(gameObject);
+        }
+
     }
 }
