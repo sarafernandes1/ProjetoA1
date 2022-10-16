@@ -62,11 +62,11 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
         if (distanceToPlayer <= dist_max && inimigo1)
         {
-            Normal();
+            Perseguir();
         }
         else
         {
-            Perseguir();
+            Normal();
         }
     }
 
@@ -100,7 +100,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        if (Vector3.Distance(transform.position, other.transform.position) <= 6.0f && other.name== "Rajadadevento")
+        if (Vector3.Distance(transform.position, other.transform.position) <= 10.0f && other.name== "Rajadadevento")
         {
             transform.position -= transform.forward *2.0f* speed;
         }

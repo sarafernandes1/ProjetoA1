@@ -23,10 +23,6 @@ public class EnemyHealth : MonoBehaviour
             inimigo2 = true;
             vida = 200;
         }
-        if (transform.tag == "Boss")
-        {
-            vida = 400;
-        }
     }
 
     void Update()
@@ -93,17 +89,17 @@ public class EnemyHealth : MonoBehaviour
 
         if (inimigo1)
         {
-            if (distanceToExplosion < 4.0f)
+            if (distanceToExplosion < 6.0f)
             {
                 vida -= 10;
             }
 
-            if (distanceToExplosion >= 4.0f && distanceToExplosion < 6.0f)
+            if (distanceToExplosion >= 6.0f && distanceToExplosion < 12.0f)
             {
                 vida -= 6;
             }
 
-            if (distanceToExplosion >= 6.0f && distanceToExplosion < 10.0f)
+            if (distanceToExplosion >= 12.0f && distanceToExplosion < 15.0f)
             {
                 vida -= 2;
             }
