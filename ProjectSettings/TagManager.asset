@@ -10,6 +10,7 @@ TagManager:
   - Recurso
   - Vida
   - AtaqueInimigo
+  - InimigoBoss
   layers:
   - Default
   - TransparentFX

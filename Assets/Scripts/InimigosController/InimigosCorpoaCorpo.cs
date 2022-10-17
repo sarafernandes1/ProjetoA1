@@ -9,13 +9,14 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     public GameObject player;
     float speed, dist_max;
     public Rigidbody rigidbody_enemy;
-    bool inimigo1, inimigo2, player_in_area, hit_player;
+    bool inimigo1, inimigo2, player_in_area, inimigo3;
 
     float cooldownTime = 2;
     float nextFireTime = 0;
 
     void Start()
     {
+        player = GameObject.Find("Player");
         if (transform.tag == "InimigoCorpoaCorpo")
         {
             speed = 1.0f;
@@ -28,6 +29,14 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             speed = 0.6f;
             dist_max = 16.0f;
             inimigo2 = true;
+        }
+
+        if (transform.tag == "InimigoBoss")
+        {
+            inimigo3 = true;
+            inimigo1 = false;
+            inimigo2 = false;
+            speed = 3.0f;
         }
     }
 
@@ -47,6 +56,11 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             {
                 AtaqueAlcance();
             }
+        }
+
+        if (inimigo3)
+        {
+            Perseguir();
         }
     }
 

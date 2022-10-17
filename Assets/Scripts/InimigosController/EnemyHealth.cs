@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public float vida = 100;
     bool isdead = false;
-    bool inimigo1, inimigo2;
+    bool inimigo1, inimigo2, inimigo3;
     public bool a;
     //public GameObject drop;
 
@@ -22,6 +22,12 @@ public class EnemyHealth : MonoBehaviour
         {
             inimigo2 = true;
             vida = 200;
+        }
+
+        if (transform.tag == "InimigoBoss")
+        {
+            vida = 250;
+            inimigo3 = true;
         }
     }
 
@@ -108,6 +114,11 @@ public class EnemyHealth : MonoBehaviour
         if (inimigo2)
         {
             vida-=5;
+        }
+
+        if (inimigo3)
+        {
+            vida -= 3;
         }
 
         bolafogo.SetActive(false);
