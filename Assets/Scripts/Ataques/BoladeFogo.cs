@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BoladeFogo : MonoBehaviour
 {
     public InputController inputController;
-    public ParticleSystem sistema_particulas;
+    public ParticleSystem sistema_particulas, explosao;
     public Slider qtd_mana;
     public Image imagem_tempo;
 
@@ -43,13 +43,24 @@ public class BoladeFogo : MonoBehaviour
                 cooldown = false;
             }
         }
+
     }
 
     void Ataque()
     {
+        sistema_particulas.gameObject.SetActive(true);
+        explosao.gameObject.SetActive(false);
         sistema_particulas.Play();
         qtd_mana.value -= 0.3f;
 
         nextFireTime = Time.time + cooldownTime;
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        sistema_particulas.gameObject.SetActive(false);
+        explosao.gameObject.SetActive(true);
+        explosao.Play();
+        explosao.transform.position = other.transform.position;
     }
 }

@@ -10,7 +10,7 @@ public class AtaqueNormal : MonoBehaviour
     bool cooldown;
     public Image imagem_tempo;
 
-    float cooldownTime = 2;
+    float cooldownTime = 0.8f;
     float nextFireTime = 0;
 
     void Start()

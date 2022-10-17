@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class EnemyHealth : MonoBehaviour
 {
     public float vida = 100;
-    bool isdead = false;
+    public ParticleSystem explosao;
+    bool isdead = false, explosao_play;
     bool inimigo1, inimigo2, inimigo3;
     public bool a;
     //public GameObject drop;
@@ -26,7 +27,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (transform.tag == "InimigoBoss")
         {
-            vida = 250;
+            vida = 200;
             inimigo3 = true;
         }
     }
@@ -37,6 +38,20 @@ public class EnemyHealth : MonoBehaviour
         {
             isdead = true;
             IsDead();
+        }
+
+        //Quando bola de fogo explode, tira vida aos outros inimigos
+        float distanceToExplosion = Vector3.Distance(transform.position, explosao.transform.position);
+        if (explosao.isEmitting)
+        {
+            explosao_play = true;
+        }
+        if (explosao_play)
+        {
+            if (distanceToExplosion < 5.0f)
+            {
+                Explosao();
+            }
         }
     }
 
@@ -49,7 +64,6 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-
         if (other.gameObject.name == "AtaqueNormal")
         {
             vida -= 2;
@@ -68,6 +82,7 @@ public class EnemyHealth : MonoBehaviour
         {
             vida -= 30;
         }
+
     }
 
     private void OnCollisionStay(Collision collision)
@@ -79,7 +94,7 @@ public class EnemyHealth : MonoBehaviour
         if (collision.transform.tag == "Player")
         {
             HealthPlayer healthPlayer = collision.transform.GetComponent<HealthPlayer>();
-            healthPlayer.qtd_vida.value -= 0.1f * Time.deltaTime;
+            healthPlayer.TakeDamage(0.1f);
         }
     }
 
@@ -91,44 +106,28 @@ public class EnemyHealth : MonoBehaviour
 
     public void AtaqueBolaFogo(GameObject bolafogo)
     {
-        float distanceToExplosion = Vector3.Distance(bolafogo.transform.position, transform.position);
-
         if (inimigo1)
         {
-            if (distanceToExplosion < 6.0f)
-            {
-                vida -= 10;
-            }
-
-            if (distanceToExplosion >= 6.0f && distanceToExplosion < 12.0f)
-            {
-                vida -= 6;
-            }
-
-            if (distanceToExplosion >= 12.0f && distanceToExplosion < 15.0f)
-            {
-                vida -= 2;
-            }
+            vida -= 6;
         }
 
-        if (inimigo2)
+        if (inimigo2 && inimigo3)
         {
             vida-=5;
         }
+    }
 
-        if (inimigo3)
-        {
-            vida -= 3;
-        }
-
-        bolafogo.SetActive(false);
+    public void Explosao()
+    {
+        explosao_play = false;
+        vida -= 5*Time.deltaTime;
     }
 
     public void RajadaVento(GameObject vento)
     {
         float distanceToVento = Vector3.Distance(vento.transform.position, transform.position);
 
-        if (distanceToVento < 8.0f)
+        if (distanceToVento < 12.0f)
         {
             vida -= 10;
         }

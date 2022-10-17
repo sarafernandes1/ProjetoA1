@@ -44,12 +44,14 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     void Update()
     {
         transform.LookAt(player.transform);
+
+        //Inimigo Corpo a Corpo
         if (inimigo1)
         {
             AtaqueCorpoaCorpo();
         }
 
-
+        //Inimigo Alcance
         if (inimigo2 && player_in_area)
         {
             if (Time.time > nextFireTime)
@@ -58,16 +60,12 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             }
         }
 
+
+        //Inimigo área boss
         if (inimigo3)
         {
             Perseguir();
         }
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player") player_in_area = true;
     }
 
     void AtaqueCorpoaCorpo()
@@ -87,7 +85,6 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     void Perseguir()
     {
         transform.position += transform.forward * speed * Time.deltaTime;
-
     }
 
     void Normal()
@@ -104,19 +101,21 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         nextFireTime = Time.time + cooldownTime;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player") player_in_area = true;
+    }
+
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            player_in_area = false;
-        }
+        if (other.gameObject.tag == "Player") player_in_area = false;
     }
 
     private void OnParticleCollision(GameObject other)
     {
         if (Vector3.Distance(transform.position, other.transform.position) <= 10.0f && other.name== "Rajadadevento")
         {
-            transform.position -= transform.forward *2.0f* speed;
+            transform.position -= transform.forward *1.2f;
         }
        
     }

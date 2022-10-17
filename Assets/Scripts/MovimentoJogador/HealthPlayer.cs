@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthPlayer : MonoBehaviour
 {
     public Slider qtd_vida;
-    public bool isdead, atingido;
+    public bool isdead;
 
     void Start()
     {
@@ -22,16 +22,17 @@ public class HealthPlayer : MonoBehaviour
         }
     }
 
-    public void TakeDamage()
+    public void TakeDamage(float damage)
     {
-       
-            qtd_vida.value -= 5.0f * Time.deltaTime;
-        
+        qtd_vida.value -= damage * Time.deltaTime;
     }
 
-
-  
-
-
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.gameObject.name == "Ataque1")
+        {
+            qtd_vida.value -= 0.3f*Time.deltaTime;
+        }
+    }
 
 }

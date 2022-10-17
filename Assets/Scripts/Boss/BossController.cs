@@ -9,8 +9,8 @@ public class BossController : MonoBehaviour
     public Rigidbody enemy;
     public Slider qtd_vida;
     public ParticleSystem particle1;
-    float speed = 2.0f;
-
+    float speed = 1.2f;
+    int n_inimigos;
     float cooldownTime = 10;
     float nextFireTime = 0;
     float nextenemy = 0;
@@ -24,16 +24,17 @@ public class BossController : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
+        transform.LookAt(player.transform);
         if ( distanceToPlayer <= 60.0f)
         {
             qtd_vida.gameObject.SetActive(true);
-            transform.LookAt(player.transform);
             transform.position += transform.forward * speed * Time.deltaTime;
             if (Time.time > nextFireTime)
             {
                 Ataque();
             }
-            if(Time.time > nextenemy){
+            if(Time.time > nextenemy && n_inimigos<=4)
+            {
                 PosicionarInimigo();
             }
         }
@@ -51,7 +52,7 @@ public class BossController : MonoBehaviour
     {
         var inimigo_chamdo1 = Instantiate(enemy, new Vector3(transform.position.x+Random.value, 5.0f, transform.position.z), transform.rotation);
         var inimigo_chamdo2 = Instantiate(enemy, new Vector3(transform.position.x, 5.0f, transform.position.z + Random.value), transform.rotation);
-
+        n_inimigos += 2;
         inimigo_chamdo1.velocity = transform.forward * 20;
         inimigo_chamdo2.velocity = transform.forward * 30;
         nextenemy = Time.time + cooldownTime;
