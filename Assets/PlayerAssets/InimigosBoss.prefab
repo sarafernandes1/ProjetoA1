@@ -844,4 +844,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 100
+  explosao: {fileID: 8162724056995800976, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
   a: 0

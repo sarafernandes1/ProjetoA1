@@ -9,11 +9,10 @@ public class BossController : MonoBehaviour
     public Rigidbody enemy;
     public Slider qtd_vida;
     public ParticleSystem particle1;
-    float speed = 1.2f;
+    float speed = 1.0f;
     int n_inimigos;
-    float cooldownTime = 10;
-    float nextFireTime = 0;
-    float nextenemy = 0;
+    float cooldownTime = 10, cooldownAtaque = 6;
+    float nextFireTime = 0, nextenemy = 0;
 
     void Start()
     {
@@ -25,27 +24,38 @@ public class BossController : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
         transform.LookAt(player.transform);
-        if ( distanceToPlayer <= 60.0f)
+        if (distanceToPlayer <= 30.0f)
         {
-            qtd_vida.gameObject.SetActive(true);
             transform.position += transform.forward * speed * Time.deltaTime;
             if (Time.time > nextFireTime)
             {
                 Ataque();
             }
-            if(Time.time > nextenemy && n_inimigos<=4)
+        }
+        if (distanceToPlayer <= 50.0f)
+        {
+            if (Time.time > nextenemy && n_inimigos <= 4)
             {
                 PosicionarInimigo();
             }
+        }
+        
+
+        if (distanceToPlayer <= 60.0f)
+        {
+            qtd_vida.gameObject.SetActive(true);
         }
         else
         {
             qtd_vida.gameObject.SetActive(false);
         }
+
     }
 
     void Ataque()
     {
+        particle1.Play();
+        nextFireTime = Time.time + cooldownAtaque;
     }
 
     void PosicionarInimigo()

@@ -13,7 +13,6 @@ public class HealthPlayer : MonoBehaviour
         
     }
 
-
     void Update()
     {
         if (qtd_vida.value <= 0)
@@ -27,12 +26,15 @@ public class HealthPlayer : MonoBehaviour
         qtd_vida.value -= damage * Time.deltaTime;
     }
 
-    private void OnParticleCollision(GameObject other)
+
+    private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.name == "Ataque1")
+        if (other.name == "Fogo")
         {
-            qtd_vida.value -= 0.3f*Time.deltaTime;
+            qtd_vida.value -= 0.01f * Time.deltaTime;
         }
     }
+
+   
 
 }
