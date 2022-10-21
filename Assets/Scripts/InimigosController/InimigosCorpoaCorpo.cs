@@ -19,8 +19,8 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         player = GameObject.Find("Player");
         if (transform.tag == "InimigoCorpoaCorpo")
         {
-            speed = 1.0f;
-            dist_max = 8.0f;
+            speed = 2.0f;
+            dist_max = 14.0f;
             inimigo1 = true;
         }
 

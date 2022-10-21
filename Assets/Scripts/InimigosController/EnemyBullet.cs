@@ -4,10 +4,21 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
+    bool ataque_alcance, ataque_boss;
+    float damage;
 
     void Start()
     {
-        
+        if (gameObject.tag == "AtaqueInimigo")
+        {
+            ataque_alcance = true;
+            damage = 5.0f;
+        }
+        else
+        {
+            ataque_boss = true;
+            damage = 8.0f;
+        }
     }
 
     void Update()
@@ -19,11 +30,11 @@ public class EnemyBullet : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             HealthPlayer healthPlayer = collision.transform.GetComponent<HealthPlayer>();
-            healthPlayer.TakeDamage(5.0f);
+            healthPlayer.TakeDamage(damage);
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.name == "Chão")
+        if (collision.gameObject.name == "Chão" || collision.gameObject.name=="Cave")
         {
             Destroy(gameObject);
         }
